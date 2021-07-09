@@ -1,0 +1,5 @@
+2021-04-14 10:08:45,807 - log - DEBUG - logfile: input_batch_00000.log
+2021-04-14 10:08:45,808 - log - DEBUG - dirname : .
+radical : input
+
+2021-04-14 10:08:45,808 - log - DEBUG - logfiles: [] ...

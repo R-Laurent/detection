@@ -1,0 +1,48 @@
+2021-04-14 10:18:55,712 - log - DEBUG - logfile: input_batch_00000.log
+2021-04-14 10:18:55,713 - log - DEBUG - dirname : .
+radical : input
+
+2021-04-14 10:18:55,713 - log - DEBUG - logfiles: ['.\\input_batch_00000.log', '.\\input_batch_00200.log', '.\\input_batch_00400.log', '.\\input_batch_00600.log', '.\\input_batch_00800.log', '.\\input_batch_01000.log', '.\\input_batch_01200.log', '.\\input_batch_01400.log', '.\\input_batch_01600.log', '.\\input_batch_01800.log', '.\\input_batch_02000.log', '.\\input_batch_02200.log', '.\\input_batch_02400.log', '.\\input_batch_02600.log', '.\\input_batch_02800.log', '.\\input_batch_03000.log', '.\\input_batch_03200.log', '.\\input_batch_03400.log', '.\\input_batch_03600.log', '.\\input_batch_03800.log', '.\\input_batch_04000.log'] ...
+2021-04-14 10:18:58,899 - log - INFO - Extracting from .\input_batch_00000.log 
+2021-04-14 10:18:58,963 - log - INFO - geometry and 
+2021-04-14 10:18:58,963 - log - INFO - IMS values
+2021-04-14 10:18:58,963 - log - INFO - Extracting from .\input_batch_00200.log 
+2021-04-14 10:18:59,005 - log - INFO - IMS values
+2021-04-14 10:18:59,005 - log - INFO - Extracting from .\input_batch_00400.log 
+2021-04-14 10:18:59,033 - log - INFO - IMS values
+2021-04-14 10:18:59,033 - log - INFO - Extracting from .\input_batch_00600.log 
+2021-04-14 10:18:59,049 - log - INFO - IMS values
+2021-04-14 10:18:59,050 - log - INFO - Extracting from .\input_batch_00800.log 
+2021-04-14 10:18:59,059 - log - INFO - IMS values
+2021-04-14 10:18:59,059 - log - INFO - Extracting from .\input_batch_01000.log 
+2021-04-14 10:18:59,076 - log - INFO - IMS values
+2021-04-14 10:18:59,077 - log - INFO - Extracting from .\input_batch_01200.log 
+2021-04-14 10:18:59,120 - log - INFO - IMS values
+2021-04-14 10:18:59,120 - log - INFO - Extracting from .\input_batch_01400.log 
+2021-04-14 10:18:59,147 - log - INFO - IMS values
+2021-04-14 10:18:59,147 - log - INFO - Extracting from .\input_batch_01600.log 
+2021-04-14 10:18:59,163 - log - INFO - IMS values
+2021-04-14 10:18:59,163 - log - INFO - Extracting from .\input_batch_01800.log 
+2021-04-14 10:18:59,195 - log - INFO - IMS values
+2021-04-14 10:18:59,196 - log - INFO - Extracting from .\input_batch_02000.log 
+2021-04-14 10:18:59,206 - log - INFO - IMS values
+2021-04-14 10:18:59,206 - log - INFO - Extracting from .\input_batch_02200.log 
+2021-04-14 10:18:59,215 - log - INFO - IMS values
+2021-04-14 10:18:59,215 - log - INFO - Extracting from .\input_batch_02400.log 
+2021-04-14 10:18:59,224 - log - INFO - IMS values
+2021-04-14 10:18:59,224 - log - INFO - Extracting from .\input_batch_02600.log 
+2021-04-14 10:18:59,232 - log - INFO - IMS values
+2021-04-14 10:18:59,233 - log - INFO - Extracting from .\input_batch_02800.log 
+2021-04-14 10:18:59,241 - log - INFO - IMS values
+2021-04-14 10:18:59,241 - log - INFO - Extracting from .\input_batch_03000.log 
+2021-04-14 10:18:59,250 - log - INFO - IMS values
+2021-04-14 10:18:59,250 - log - INFO - Extracting from .\input_batch_03200.log 
+2021-04-14 10:18:59,259 - log - INFO - IMS values
+2021-04-14 10:18:59,259 - log - INFO - Extracting from .\input_batch_03400.log 
+2021-04-14 10:18:59,267 - log - INFO - IMS values
+2021-04-14 10:18:59,268 - log - INFO - Extracting from .\input_batch_03600.log 
+2021-04-14 10:18:59,283 - log - INFO - IMS values
+2021-04-14 10:18:59,283 - log - INFO - Extracting from .\input_batch_03800.log 
+2021-04-14 10:18:59,292 - log - INFO - IMS values
+2021-04-14 10:18:59,292 - log - INFO - Extracting from .\input_batch_04000.log 
+2021-04-14 10:18:59,298 - log - INFO - IMS values

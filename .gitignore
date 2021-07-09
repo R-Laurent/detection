@@ -1,0 +1,9 @@
+__pycache__
+aartigas/*
+tutorial/*.com
+tutorial/geom.xyz
+tutorial/nics.dat
+tutorial/normals.csv
+tutorial/p_mesh_c.ply
+tutorial/points_values.csv
+
