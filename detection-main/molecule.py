@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
+from numpy.linalg import norm
 import atome 
 import pandas as pd
 import math as mt
@@ -76,6 +77,45 @@ class Molecule:
             print("Voisins de {} :".format(el[0]))
             for at in el:
                 at.print()
+    
+    def hydrogene_list(self):
+        v = []
+        for el in self.atomlist:
+            if el.getlabel() == 'H':
+                v.append(el)
+        return v
+
+
+    def dist_hydrogene(self):
+        L = self.hydrogene_list()
+        v = []
+        c = []
+        i = 0
+        j = 0
+        k = 0
+        for el in L:
+            pos1 = np.array(el.getCoords()) 
+            i = i + 1
+            j = 0
+            for el2 in L:
+                pos2 = np.array(el2.getCoords())
+                vect1 = pos1 - pos2  
+                j = j + 1
+                n = np.linalg.norm(vect1) 
+                if n <= 4 and el != el2:
+                    b = [i, n, j, el, el2]
+                    c = [n, i, j]
+                    #c.append(n)
+                    #b.append("L'atome d'H num : ", i, " a une distance de : ", norm, "avec l'atome : ", j)
+                    v.append(c)
+                    k = k + 1
+
+        for i in range(len(v)):
+            if i%2 != 0:
+                del v[i]
+        return v 
+
+            
 
 
 

@@ -1,6 +1,7 @@
 from os import remove
 import numpy as np 
 import matplotlib.pyplot as plt
+from numpy.core.fromnumeric import sort
 import molecule as mol
 import math as mt
 
@@ -8,7 +9,7 @@ import math as mt
 def main():
     print("---------------------detection--------------------------")
 
-    molecule = mol.Molecule("geoms/acene5.xyz")
+    molecule = mol.Molecule("geoms/geom01.xyz")
     print("------------------detection_test-------------------------------")
     
     z = molecule.preBarycenterZig_Zag(molecule.zigzag)
@@ -20,9 +21,19 @@ def main():
     print(z)
 
     print()
-    print("barycentres de zig zag acene")
+    print("barycentres de zig zag :")
     print(molecule.getBarycenter(molecule.preBarycenterZig_Zag(molecule.zigzag)))
 
+
+    print()
+    h = molecule.hydrogene_list()
+    print("voisins hydrogènes : ",h , "la longueur de la liste est : ", len(h))
+    print()
+    hd = molecule.dist_hydrogene()
+    hd.sort()
+    print(" la liste des distances entre hydrogènes : ", hd)
+
+    """
     print()
     print("Bay REGION")
     a = molecule.bay_region
@@ -54,26 +65,26 @@ def main():
 
 
 
-    """for i in range(3):
+    for i in range(3):
         del a[i]
     
     print("voici la liste bay après del ??")
     print()
-    print(a, len(a))"""
+    print(a, len(a))
 
 
-    """for i in range(len(a)): 
+    for i in range(len(a)): 
         for j in range(len(a[i])):
             plt.scatter(a[i][j][0],a[i][j][1], c = 'b' ) 
     plt.title("DETECTION_TEST")
-    plt.show()"""
+    plt.show()
     
 
 
-    """for i in range(len(m)):
+    for i in range(len(m)):
         plt.scatter(m[i][0], m[i][1], c = 'b')
     plt.title("DETECTION_TEST")
-    plt.show()"""
+    plt.show()
 
     print()
     print()
@@ -81,14 +92,14 @@ def main():
 
     h = molecule.sort_bay(molecule.bay_has_same_direction())
     print("la bay region après la comparaison des vecteurs : ")
-    print(h, "nombre d'éléments : ", len(h))
+    print(h, "nombre d'éléments de la liste : ", len(h))
 
-    for i in range(len(a)): 
-        for j in range(len(a[i])):
-            plt.scatter(a[i][j][0],a[i][j][1], c = 'b' ) 
-    plt.title("DETECTION_TEST")
+    for i in range(len(h)): 
+        for j in range(len(h[i])):
+            plt.scatter(h[i][j][0],h[i][j][1], c = 'b' ) 
+    plt.title("DETECTION_TEST_geom01")
     plt.show()
-
+    """
     print("------------------------ fin detection-test--------------------------------")
 
 
