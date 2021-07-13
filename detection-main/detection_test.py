@@ -9,7 +9,7 @@ import math as mt
 def main():
     print("---------------------detection--------------------------")
 
-    molecule = mol.Molecule("geoms/geom01.xyz")
+    molecule = mol.Molecule("geoms/geom02.xyz")
     print("------------------detection_test-------------------------------")
     
     z = molecule.preBarycenterZig_Zag(molecule.zigzag)
@@ -29,77 +29,34 @@ def main():
     h = molecule.hydrogene_list()
     print("voisins hydrogènes : ",h , "la longueur de la liste est : ", len(h))
     print()
+    print()
     hd = molecule.dist_hydrogene()
     hd.sort()
-    print(" la liste des distances entre hydrogènes : ", hd)
-
-    """
-    print()
-    print("Bay REGION")
-    a = molecule.bay_region
-    print(a, "nombre de bay : ", len(a))
-    print()
-    print("premier élément de bay region")
-    print(a[0])
-    m = a[0]
-    print()
-    print("voici le premier élément plus en profondeur : ")
-    print(a[0][0])
-
-
-    
-    a2 = molecule.bay_region_label()
-    a2_1 = a2
-    print("bay region label: ")
-    print()
-    
-    for i in range(len(a2)):
-        print(a2[i])
-
-
-    print(len(a2))
-
-
-
-
-
-
-
-    for i in range(3):
-        del a[i]
-    
-    print("voici la liste bay après del ??")
-    print()
-    print(a, len(a))
-
-
-    for i in range(len(a)): 
-        for j in range(len(a[i])):
-            plt.scatter(a[i][j][0],a[i][j][1], c = 'b' ) 
-    plt.title("DETECTION_TEST")
-    plt.show()
+    print(" la liste des distances entre hydrogènes : ")
+    for i in range(len(hd)):
+        print(hd[i])
     
 
 
-    for i in range(len(m)):
-        plt.scatter(m[i][0], m[i][1], c = 'b')
-    plt.title("DETECTION_TEST")
+    a = molecule.bay_dist_Hydrogene()
+    c = molecule.get_coords_bay()
+    #c1 = molecule.sort_bay(molecule.get_coords_bay())
+    
+    print("nombre d'éléments de la liste a : ", len(a))
+    print()
+    print(c, "nombre d'éléments : ", len(c))
+    """for i in range(len(c)):
+        print(c[i])"""
+    for i in range(len(c)):
+        for j in range(len(c[i])):
+            plt.scatter(c[i][j][0],c[i][j][1])
     plt.show()
 
-    print()
-    print()
-    print()
 
-    h = molecule.sort_bay(molecule.bay_has_same_direction())
-    print("la bay region après la comparaison des vecteurs : ")
-    print(h, "nombre d'éléments de la liste : ", len(h))
+    
 
-    for i in range(len(h)): 
-        for j in range(len(h[i])):
-            plt.scatter(h[i][j][0],h[i][j][1], c = 'b' ) 
-    plt.title("DETECTION_TEST_geom01")
-    plt.show()
-    """
+
+    
     print("------------------------ fin detection-test--------------------------------")
 
 

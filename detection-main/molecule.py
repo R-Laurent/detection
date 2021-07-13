@@ -1,3 +1,4 @@
+
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
@@ -5,8 +6,6 @@ from numpy.linalg import norm
 import atome 
 import pandas as pd
 import math as mt
-
-
 def read_xyz(filename):
     # RL
     # à la base je voulais faire des sous-programmes qui s'appelaient entre eux mais je suis assez rouillé dans cette notion de python, du coup j'ai fait tout dans un
@@ -37,9 +36,7 @@ class Molecule:
         self.zigzag = self.zig_zag()
         #self.L_barycenter = self.preBarycenter()
         #self.barycenters = self.getBarycenter()
-        self.kRegion = self.kRegion()
-        self.bay_region = self.bay_region_coords()
-        
+        self.kRegion = self.kRegion()        
         
 
     """
@@ -89,6 +86,7 @@ class Molecule:
     def dist_hydrogene(self):
         L = self.hydrogene_list()
         v = []
+        v2 = []
         c = []
         i = 0
         j = 0
@@ -104,16 +102,24 @@ class Molecule:
                 n = np.linalg.norm(vect1) 
                 if n <= 4 and el != el2:
                     b = [i, n, j, el, el2]
-                    c = [n, i, j]
+                    c = [n, el.getCoords(), el2.getCoords(), i, j]
                     #c.append(n)
                     #b.append("L'atome d'H num : ", i, " a une distance de : ", norm, "avec l'atome : ", j)
                     v.append(c)
-                    k = k + 1
+                   
 
-        for i in range(len(v)):
-            if i%2 != 0:
-                del v[i]
-        return v 
+        """for i in range(len(v)):
+            if i%2 == 0:
+                v2.append(v[i])"""
+
+
+        return v
+    def dist_2_atoms(self,a,b):
+        pos1 = np.array(a.getCoords())
+        pos2 = np.array(b.getCoords())
+        vect = pos1 - pos2
+        n = np.linalg.norm(vect)
+        return n
 
             
 
@@ -277,6 +283,36 @@ class Molecule:
                         v.append(b)
         
         return v
+
+    def bay_dist_Hydrogene(self):
+        d0 = 1.71
+        d1 = 1.177
+        v = []
+        L = self.bay_region_no_coords()
+        for el in L:
+            for i in range(len(el)):
+                if el[i].getlabel() ==  'H':
+                    a = el[i]
+                    for j in range(len(el)):
+                        if j != i and el[j].getlabel() == 'H':
+                            b = el[j]
+                            a = self.dist_2_atoms(a,b)
+                            if a>=0.90*d0 and a<=1.1*d0:
+                                v.append(el)
+                            
+        return v
+    
+    def get_coords_bay(self):
+        L = self.bay_dist_Hydrogene()
+        v = []
+        for el in L:
+            b = []
+            for i in range(len(el)):
+                b.append(el[i].getCoords())
+            v.append(b)
+        return v
+
+
     
     def bay_has_same_direction(self):
         L = self.bay_region
