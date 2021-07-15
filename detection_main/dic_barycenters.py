@@ -12,3 +12,4 @@ def barycenters(filename):
     }
     return v
 
+#print(barycenters("geoms/acene5.xyz"))
