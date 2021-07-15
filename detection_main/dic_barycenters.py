@@ -11,5 +11,4 @@ def barycenters(filename):
 
     }
     return v
-a = barycenters("geoms/acene5.xyz")
-print(a)
+
