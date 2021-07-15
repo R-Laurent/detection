@@ -6,6 +6,15 @@ from numpy.linalg import norm
 import atome 
 import pandas as pd
 import math as mt
+
+"""!!!!!! for now the name "zigzag" for the zigzag region is not really a list of the region,
+ it's just a list that contais only carbon atoms that have only carbons neighbour,
+this list can be very usefull for all the other region. If it's not renamed, it's because I prefer that it stay like that. !!!!!!!!!"""
+
+
+""" ENJOY !! """
+
+
 def read_xyz(filename):
     # RL
     # à la base je voulais faire des sous-programmes qui s'appelaient entre eux mais je suis assez rouillé dans cette notion de python, du coup j'ai fait tout dans un
@@ -32,11 +41,11 @@ class Molecule:
         self.neighbour = []
         self.atomlist = read_xyz(filename)
         self.voisin()
-        self.printVoisins()
+        #self.printVoisins()
         self.zigzag = self.zig_zag()
         #self.L_barycenter = self.preBarycenter()
         #self.barycenters = self.getBarycenter()
-        self.kRegion = self.kRegion()        
+        self.k_Region = self.kRegion()        
         
 
     """
@@ -132,8 +141,6 @@ class Molecule:
     def zig_zag(self):
         v = []
         neighbour2 = []
-        neighbour2 = self.neighbour
-        print()
         for el in self.neighbour:
             store = True
             for i in range(4):
@@ -157,7 +164,6 @@ class Molecule:
         v = []
         neighbour2 = []
         neighbour2 = self.neighbour
-        print()
         for el in self.neighbour:
             store = True
             for i in range(4):
@@ -218,13 +224,9 @@ class Molecule:
             for el2 in zig_zag:
                 if self.are_neighbour_bay(el[0],el2) and el2 != el:
                     b = []
-                    print("ils sont voisins")
                     ok1, a1, h1 = self.bay_C_H(el[0])
                     ok2, a2, h2 = self.bay_C_H(el2[0])
                     if ok1 and ok2:
-                        print(self.bay_has_boolean_H_neighbor(h1))
-                        print(self.bay_has_boolean_H_neighbor(h2))
-                        print("ils sont vrais")
                         b.append(el[0])
                         b.append(a1)
                         b.append(h1)
@@ -243,13 +245,11 @@ class Molecule:
             for el2 in zig_zag:
                 if self.are_neighbour_bay(el[0],el2) and el2 != el:
                     b = []
-                    print("ils sont voisins")
                     ok1, a1, h1 = self.bay_C_H(el[0])
                     ok2, a2, h2 = self.bay_C_H(el2[0])
                     if ok1 and ok2:
-                        print(self.bay_has_boolean_H_neighbor(h1))
-                        print(self.bay_has_boolean_H_neighbor(h2))
-                        print("ils sont vrais")
+                                                         #the three function "bay_region" that are following are a "preList" 
+                                                         #of atoms that can be in a bay region
                         b.append(h1.getlabel())
                         b.append(a1.getlabel())
                         b.append(el[0].getlabel())
@@ -286,7 +286,7 @@ class Molecule:
 
     def bay_dist_Hydrogene(self):
         d0 = 1.71
-        d1 = 1.177
+        d1 = 1.77
         v = []
         L = self.bay_region_no_coords()
         for el in L:
@@ -313,41 +313,10 @@ class Molecule:
         return v
 
 
-    
-    def bay_has_same_direction(self):
-        L = self.bay_region
-        v = []
-        b = True
-        for i in range(len(L)):
-            print("marqueur : ", i)
-            pos1 = np.array(L[i][0]) 
-            pos2 = np.array(L[i][1])
-            vect1 = pos1 - pos2
-            
-            pos3 = np.array(L[i][1]) 
-            pos4 = np.array(L[i][2])
-            vect2 = pos3 - pos4
-            n1 = np.cross(vect1, vect2)
-
-            pos5 = np.array(L[i][3]) 
-            pos6 = np.array(L[i][4])
-            vect3 = pos5 - pos6
-            
-            pos7 = np.array(L[i][4]) 
-            pos8 = np.array(L[i][5])
-            vect4 = pos7 - pos8
-            n2 = np.cross(vect3, vect4)
-
-            z = np.vdot(n1,n2)
-            if z > 0:
-                b = True
-                v.append(L[i])
-        return v
-
     def sort_bay(self, L):
         for i in range(len(L)):
             for j in range(len(L)):
-                if L[i] == L[j] and i != j:
+                if L[i] == L[j] and i != j:       #do not work well, or simply not
                     del L[j]
         return L
 
@@ -403,8 +372,8 @@ class Molecule:
             L.append(el[0])
             k = 0
             for i in range(len(el)):
-                if self.hasHneighbor(el[i]) == True:      # peut être si il est vrai deux fois 
-                    k = k + 1                                      # alors on ajoute 
+                if self.hasHneighbor(el[i]) == True:      
+                    k = k + 1                                       
                     a = el[i]
                     b = self.getHneighbor(el[i])
                     L.append(el[i])
@@ -468,27 +437,3 @@ class Molecule:
                 plt.scatter(b[i][0],b[i][1], c = 'black', marker='*')
             plt.title("DETECTION")
             plt.show()
-
-   
-
-
-
-
-
-
-
-
-                                                                                                                
-                                                                                    
-    
-
-        
-
-
-
-
-
-       
-                                              
-    
-

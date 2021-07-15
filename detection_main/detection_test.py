@@ -9,7 +9,7 @@ import math as mt
 def main():
     print("---------------------detection--------------------------")
 
-    molecule = mol.Molecule("geoms/geom02.xyz")
+    molecule = mol.Molecule("geoms/zzz.xyz")
     print("------------------detection_test-------------------------------")
     
     z = molecule.preBarycenterZig_Zag(molecule.zigzag)
