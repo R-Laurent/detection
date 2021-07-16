@@ -2,6 +2,7 @@
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
+from numpy.core.fromnumeric import sort
 from numpy.linalg import norm
 import atome 
 import pandas as pd
@@ -410,13 +411,35 @@ class Molecule:
     def sort_barycenters(self, M):
         v = []
         for i in range(len(M)):
-            for j in range(i, len(M)):
-                if i!=j and j!=0 and i!=0 and M[i][0] == M[j][0] and M[i][1] == M[j][1]:
-                    #v.append(M[j])
-                    del M[i]
-                    break
-        return M
+            if i%2 == 0:
+                v.append(M[i])
+        return v
 
+
+
+
+        """v = []
+        for i in range(len(M)):
+            print("i : ", i)
+            p = len(M)
+            for j in range(i, len(M)):
+                #p = len(M) 
+                a = M[i][0] - M[j][0]
+                b = M[i][1] - M[j][1]
+                if np.abs(a) < 10*np.e-10 and np.abs(b) < 10*np.e-10 and i!=j:  
+                    #v.append(M[j])
+                    #j = j - 1
+                    v.append(j)
+                    print("i : ",i ,"j :", j)
+                    #print(M, "la longueur est : ", len(M))
+        print("v avant d'être inversé : ", v, len(v))
+        
+        v = -v
+        sort(v)
+        v = -v
+
+        return M"""
+        
 
     def scatter1(self, b):
             """
