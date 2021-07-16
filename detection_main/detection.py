@@ -13,7 +13,7 @@ import molecule as mol
 def main():
     print("---------------------detection--------------------------")
 
-    molecule = mol.Molecule("geoms/acene5.xyz")
+    molecule = mol.Molecule("geoms/geom01.xyz")
     z = molecule.preBarycenterZig_Zag(molecule.zig_zag())
     k = molecule.preBarycenterZig_Zag(molecule.kRegion())
     print()
@@ -35,13 +35,22 @@ def main():
     print(molecule.getBarycenter(molecule.preBarycenterZig_Zag(molecule.zig_zag())))
     a = molecule.getBarycenter(molecule.preBarycenterZig_Zag(molecule.zig_zag()))
     print()
+    print("nombre de zig-zag : ", len(a))
+    print()
     print("Barycenters K Regions : ")
     print(molecule.getBarycenter(molecule.preBarycenterK_Regions(molecule.kRegion())))
     b = molecule.getBarycenter(molecule.preBarycenterK_Regions(molecule.kRegion()))
+    print()
+    print("nombre de K : ", len(b))
 
-    c = molecule.getBarycenter(molecule.bay_dist_Hydrogene())
+
+    print("logueur liste bay_dist : ", len(molecule.bay_dist_Hydrogene()))
+    c1 = molecule.getBarycenter(molecule.bay_dist_Hydrogene())
+    c = molecule.sort_barycenters(c1)
     print("Barycenters bay regions Regions : ")
     print(c, "nombre de barycentres : ", len(c))
+    print()
+    print("le premier élément : ", c[0][0])
 
     Barycenters = []
 

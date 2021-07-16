@@ -158,19 +158,17 @@ class Molecule:
                 for i in range(4):
                     if el[i].getLabel() == 'H':
                         z = False
+                        return z
         return z
     
     def kRegion(self):
         v = []
-        neighbour2 = []
-        neighbour2 = self.neighbour
         for el in self.neighbour:
             store = True
             for i in range(4):
-                if el[i].getlabel() == 'H':                                                                
-                    store = False
-                    v.append(el)
-                    
+                if el[i].getlabel() == 'H':   #si je trouve pas comment enlever les doublons alors                                                              
+                    store = False             #alors on triera la liste de barycentres
+                    v.append(el)         
         return v
     
     
@@ -293,15 +291,16 @@ class Molecule:
             for i in range(len(el)):
                 if el[i].getlabel() ==  'H':
                     a = el[i]
-                    for j in range(len(el)):
+                    for j in range(i,len(el)):
                         if j != i and el[j].getlabel() == 'H':
                             b = el[j]
                             a = self.dist_2_atoms(a,b)
                             if a>=0.90*d0 and a<=1.1*d0:
                                 v.append(el)
-                            
+                
+                    break
         return v
-    
+
     def get_coords_bay(self):
         L = self.bay_dist_Hydrogene()
         v = []
@@ -408,6 +407,15 @@ class Molecule:
             barycenters.append(barycenter)
         return barycenters
     
+    def sort_barycenters(self, M):
+        v = []
+        for i in range(len(M)):
+            for j in range(i, len(M)):
+                if i!=j and j!=0 and i!=0 and M[i][0] == M[j][0] and M[i][1] == M[j][1]:
+                    #v.append(M[j])
+                    del M[i]
+                    break
+        return M
 
 
     def scatter1(self, b):
