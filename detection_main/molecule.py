@@ -412,7 +412,7 @@ class Molecule:
         v = []
         for i in range(len(M)):
             if i%2 == 0:
-                v.append(M[i])
+                v.append(M[i])     # c'est cette fonction qui reste codé pour pouvoir trier les barycentres
         return v
 
 
